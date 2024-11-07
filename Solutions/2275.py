@@ -3,12 +3,10 @@ def largestCombination(candidates):
     max = 0
     for num in candidates:
         binary = bin(num)[2:]  # Convert the number to binary and remove the '0b' prefix
-        
-        # we will reverse the binary representation to make it easier to compare
-        binary = binary[::-1]
+        n = len(binary)
         idx = 0
-        while idx < len(binary):
-            if binary[idx] == '1':
+        while idx < n:
+            if binary[(n-1)-idx] == '1':
                 bit_list[idx] += 1
                 if max < bit_list[idx]:
                     max = bit_list[idx]
@@ -20,7 +18,7 @@ def largestCombination(candidates):
 
 def main():
     # To try Test cases
-    candidates = [8,8]
+    candidates = [16,17,71,62,12,24,14]
     print(largestCombination(candidates))
 
 main()
