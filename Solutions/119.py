@@ -5,27 +5,24 @@ def make_grid(numRows):
         result.append(a)
     return result
 
-def generate(numRows):
+def getRow(rowIndex):
+    numRows = rowIndex + 1
     grid = make_grid(numRows)
     for i in range(1, numRows):
         for j in range(1, numRows-i):
             grid[i][j] = grid[i-1][j] + grid[i][j-1]
     
     result = list()
-    for i in range(numRows):
-        row = list()
-        j = 0
-        row.append(grid[i][j])
-        while i != 0:
-            j += 1
-            i -= 1
-            row.append(grid[i][j])
-        result.append(row)
-    
+    j = 0
+    result.append(grid[rowIndex][j])
+    while rowIndex != 0:
+        rowIndex -= 1
+        j += 1
+        result.append(grid[rowIndex][j])
     return result
 
 def main():
-    numRows = 1
-    print(generate(numRows))
+    rowIndex = 3
+    print(getRow(rowIndex))
 
 main()
